@@ -3,12 +3,12 @@ defmodule Slarchbot.Character do
 
   schema "characters" do
     field :name, :string
+    has_many :quotes, Slarchbot.Quote
 
     timestamps
   end
 
-  @required_fields ~w(name)
-  @optional_fields ~w()
+  @allowed_fields ~w(name)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -16,8 +16,9 @@ defmodule Slarchbot.Character do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
+  def changeset(model, params \\ :invalid) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, @allowed_fields)
+    |> validate_required [:name]
   end
 end

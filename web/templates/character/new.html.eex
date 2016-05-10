@@ -1,0 +1,4 @@
+<%= form_for @changeset, character_path(@conn, :create), fn f -> %>
+  <%= text_input f, :name %>
+  <%= submit "Create Character" %>
+<% end %>

@@ -1,0 +1,5 @@
+<ul>
+<%= for character <- @characters do %>
+  <li><%= link(character.name, to: character_path(@conn, :show, character)) %></li>
+<% end %>
+</ul>

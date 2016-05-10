@@ -1,0 +1,16 @@
+<h1><%= @character.name %></h1>
+
+<h2>Add a quote</h2>
+<%= form_for @quote_cs, character_quote_path(@conn, :create, @character), fn f ->%>
+  <%= label f, :content %>
+  <%= text_input f, :content %>
+  <%= submit "Add Quote" %>
+<% end %>
+
+<h2>Some quotes!</h2>
+
+<%= for quote <- @character.quotes do %>
+  <p>
+  <%= quote.content %>
+  </p>
+<% end %>
