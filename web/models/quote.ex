@@ -2,7 +2,7 @@ defmodule Slarchbot.Quote do
   use Slarchbot.Web, :model
 
   schema "quotes" do
-    field :content, :text
+    field :content, :string
     belongs_to :character, Slarchbot.Character
 
     timestamps
