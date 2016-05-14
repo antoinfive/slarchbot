@@ -4,9 +4,10 @@ defmodule Slarchbot.Repo.Migrations.CreateCharacter do
   def change do
     create table(:characters) do
       add :name, :string
-      
+
       timestamps
     end
+    create unique_index(:characters, [:name])
 
   end
 end

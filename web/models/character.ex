@@ -1,6 +1,6 @@
 defmodule Slarchbot.Character do
   use Slarchbot.Web, :model
-
+  alias Slarchbot.Repo
   schema "characters" do
     field :name, :string
     has_many :quotes, Slarchbot.Quote
@@ -20,5 +20,15 @@ defmodule Slarchbot.Character do
     model
     |> cast(params, @allowed_fields)
     |> validate_required [:name]
+    |> unique_constraint [:name]
+  end
+
+  def find_or_create(character) do
+    query = from c in Slarchbot.Character,
+            where: c.name == ^character
+    if !Repo.one(query)  do
+      Repo.insert(character)
+    end
+    Repo.one(query)
   end
 end

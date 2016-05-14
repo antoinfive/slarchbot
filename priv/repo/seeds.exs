@@ -9,3 +9,9 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+# import Parser
+# alias Parser.ScriptParser
+require IEx
+Code.load_file("./lib/Parser/script_parser.ex")
+
+ScriptParser.read_file
