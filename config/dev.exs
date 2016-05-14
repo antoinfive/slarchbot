@@ -35,7 +35,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :slarchbot, Slarchbot.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "flatironschool",
+  username: "SophieDeBenedetto",
   database: "slarchbot_dev",
   hostname: "localhost",
   pool_size: 10

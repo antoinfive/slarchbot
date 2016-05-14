@@ -2,7 +2,7 @@ defmodule ScriptParser do
   require IEx
 
 
-  @path "/Users/flatironschool/Development/code/Elixir/archer/data/text/s1e1-Pilot-Mole-Hunt.txt"
+  @path "/Users/SophieDeBenedetto/Dev/archer-bot/archer/data/text/s1e1-Pilot-Mole-Hunt.txt"
 
   def read_file do
     script = File.read(@path)
