@@ -29,3 +29,6 @@ config :phoenix, :generators,
   binary_id: false
 
 config :slarchbot, ecto_repos: [Slarchbot.Repo]
+
+config :slarchbot, Archer.Slack,
+token: System.get_env("ARCHER_TOKEN")

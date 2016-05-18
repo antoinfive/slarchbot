@@ -19,7 +19,7 @@ defmodule Slarchbot.Mixfile do
   def application do
     [mod: {Slarchbot, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :slack]]
   end
 
   # Specifies which paths to compile per environment.
@@ -36,7 +36,10 @@ defmodule Slarchbot.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:phoenix_ecto, "~> 3.0.0-beta"}]
+     {:phoenix_ecto, "~> 3.0.0-beta"},
+     {:slack, "~> 0.4.1"},
+     {:websocket_client, git: "https://github.com/jeremyong/websocket_client"}
+   ]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
