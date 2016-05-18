@@ -10,10 +10,12 @@ defmodule Archer.Slack do
     {:ok, state}
   end
 
-  def handle_message(message = %{type: "message", text: "Can't or Won't?"}, slack, state) do
-    Slack.send_message("Either", message.channel, slack)
+  def handle_message(message = %{type: "message", text: "Quote"}, slack, state) do
+    Slack.send_message(Slarchbot.Repo.quote_query, message.channel, slack)
     {:ok, state}
   end
 
   def handle_message(_message, _slack, state), do: {:ok, state}
+
+
 end
