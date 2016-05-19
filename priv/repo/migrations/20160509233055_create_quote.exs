@@ -3,7 +3,7 @@ defmodule Slarchbot.Repo.Migrations.CreateQuote do
 
   def change do
     create table(:quotes) do
-      add :content, :string
+      add :content, :text
       add :character_id, references(:characters, on_delete: :nothing)
 
       timestamps
