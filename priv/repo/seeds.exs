@@ -26,4 +26,4 @@ Code.load_file("./lib/Parser/script_parser.ex")
 
 
 
-ScriptParser.read_file
+ScriptParser.start_parse
