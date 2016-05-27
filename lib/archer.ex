@@ -13,12 +13,12 @@ defmodule Archer.Slack do
     {:ok, state}
   end
 
-  def handle_message(message = %{type: "message", text: "Quote"}, slack, state) do
+  def handle_message(message = %{type: "message", text: "quote"}, slack, state) do
     Slack.send_message(Slarchbot.Repo.quote_query, message.channel, slack)
     {:ok, state}
   end
 
-  def handle_message(message = %{type: "message", text: "Can't or Won't?"}, slack, state) do
+  def handle_message(message = %{type: "message", text: "can't or won't?"}, slack, state) do
     Slack.send_message("Either", message.channel, slack)
     {:ok, state}
   end
@@ -29,11 +29,18 @@ defmodule Archer.Slack do
     {:ok, state}
   end
 
+  def handle_message(message = %{type: "message", text: "die"}, slack, state) do
+    Slack.send_message("You're not my Supervisor!", message.channel, slack)
+    5/0
+    {:ok, state}
+  end
+
   def handle_message(message = %{type: "message", text: character}, slack, state) do
-    message_to_send = Slarchbot.Repo.find_character_by_query(character)
+    message_to_send = Slarchbot.Repo.find_character_by_query(String.downcase(character))
     Slack.send_message(message_to_send, message.channel, slack)
     {:ok, state}
   end
+
 
   def handle_message(_message, _slack, state), do: {:ok, state}
 

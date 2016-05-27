@@ -11,13 +11,14 @@ defmodule Slarchbot.Repo do
   end
 
   def random(number) do
-     :random.seed(:erlang.now())
-     :random.uniform(number)
+   :random.seed(:erlang.now())
+   :random.uniform(number)
   end
 
   def find_character_by_query(character) do
     if Repo.get_by(Character, name: character) do
       char = Repo.get_by(Character, name: character)
+        |> IO.inspect
       id = get_random_quote_id(char)
       the_quote = get_random_quote(id)
       the_quote.content
