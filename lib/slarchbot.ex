@@ -1,7 +1,7 @@
 defmodule Slarchbot do
   use Application
 
-  # See http://elixir-lang.org/docs/stable/elixir/Application.html
+  #See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
@@ -13,6 +13,7 @@ defmodule Slarchbot do
       supervisor(Slarchbot.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Slarchbot.Worker, [arg1, arg2, arg3]),
+      supervisor(Malory, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -27,4 +28,8 @@ defmodule Slarchbot do
     Slarchbot.Endpoint.config_change(changed, removed)
     :ok
   end
+
+
+
+
 end

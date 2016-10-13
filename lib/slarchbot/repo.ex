@@ -6,7 +6,7 @@ defmodule Slarchbot.Repo do
   alias Slarchbot.Repo
 
   def quote_query do
-   quotes = Slarchbot.Repo.get(Slarchbot.Quote, Slarchbot.Repo.random(688))
+   quotes = Repo.get(Quote, Repo.random(688))
    quotes.content
   end
 
@@ -27,7 +27,7 @@ defmodule Slarchbot.Repo do
 
   def get_random_quote_id(character) do
     quote_query = Ecto.assoc(character, :quotes)
-    Enum.random(Slarchbot.Repo.all(Ecto.Query.select(Quote, [quote_query], quote_query.id)))
+    Enum.random(Repo.all(select(Quote, [quote_query], quote_query.id)))
   end
 
   def get_random_quote(id) do
